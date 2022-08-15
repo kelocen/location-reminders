@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <!-- Constraint Layout -->
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/RemindersActivity.ConstraintLayout"
+    tools:context=".locationreminders.RemindersActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constrainedHeight="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/RemindersActivity.Toolbar"
+        app:menu="@menu/main_menu"
+        app:title="@string/app_name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Fragment Container -->
+    <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/nav_host_fragment"
+      style="@style/RemindersActivity.FragmentContainerView"
+      app:defaultNavHost="true"
+      app:layout_constrainedHeight="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/appbar"
+      app:navGraph="@navigation/nav_graph" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/reminderListFragment">
+
+  <activity
+    android:id="@+id/remindersActivity"
+    android:label="RemindersActivity"
+    android:name="dev.kelocen.reminders.locationreminders.RemindersActivity" />
+  <fragment
+    android:id="@+id/reminderListFragment"
+    android:label="ReminderListFragment"
+    android:name="dev.kelocen.reminders.locationreminders.reminderslist.ReminderListFragment">
+    <action
+      android:id="@+id/to_save_reminder"
+      app:destination="@id/saveReminderFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/saveReminderFragment"
+    android:label="Add Reminder"
+    android:name="dev.kelocen.reminders.locationreminders.savereminder.SaveReminderFragment">
+    <action
+      android:id="@+id/save_to_reminder_list"
+      app:destination="@id/reminderListFragment"
+      app:popUpTo="@id/reminderListFragment"
+      app:popUpToInclusive="true" />
+    <action
+      android:id="@+id/to_select_location"
+      app:destination="@id/selectLocationFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/selectLocationFragment"
+    android:label="Select Location"
+    android:name="dev.kelocen.reminders.locationreminders.savereminder.selectlocation.SelectLocationFragment">
+    <action
+      android:id="@+id/action_SelectReminderFragment_to_RemindersListFragment"
+      app:destination="@id/reminderListFragment"
+      app:popUpTo="@id/reminderListFragment"
+      app:popUpToInclusive="true" />
+  </fragment>
+
+</navigation>

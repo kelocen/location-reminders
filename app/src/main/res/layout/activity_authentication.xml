@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    style="@style/Reminders.AuthenticationActivity.ConstraintLayout"
+    tools:context=".authentication.AuthenticationActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constrainedHeight="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AuthenticationActivity.Toolbar"
+        app:title="@string/app_name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Reminders Logo -->
+    <ImageView
+      android:id="@+id/image_reminders_logo"
+      style="@style/AuthenticationActivity.RemindersLogo"
+      android:contentDescription="@string/the_reminders_logo"
+      app:layout_constrainedHeight="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/appbar" />
+
+    <!-- Login Button -->
+    <Button
+      android:id="@+id/button_login_register"
+      style="@style/AuthenticationActivity.LoginButton"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

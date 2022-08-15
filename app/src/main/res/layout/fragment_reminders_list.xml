@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    <variable
+      name="viewModel"
+      type="dev.kelocen.reminders.locationreminders.reminderslist.RemindersListViewModel" />
+  </data>
+
+  <!-- Swipe Refresh Layout -->
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/refreshLayout"
+    style="@style/RemindersFragment.SwipeRefreshLayout"
+    tools:context=".locationreminders.reminderslist.RemindersListFragment">
+
+    <!-- Constraint Layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/RemindersFragment.ConstraintLayout">
+
+      <!-- Reminders RecyclerView -->
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/remindersRecyclerView"
+        style="@style/RemindersFragment.RecyclerView"
+        android:liveData="@{viewModel.remindersList}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <!-- No data TextView -->
+      <TextView
+        android:id="@+id/noDataTextView"
+        style="@style/RemindersFragment.TextView"
+        android:fadeVisible="@{viewModel.showNoData.booleanValue()}"
+        app:drawableTopCompat="@drawable/ic_no_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <!-- Swipe Refresh Layout -->
+      <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/RemindersFragment.ProgressBar"
+        android:fadeVisible="@{viewModel.showLoading.booleanValue()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <!-- Add Reminders Button -->
+      <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addReminderFAB"
+        style="@style/RemindersFragment.RemindersButton"
+        android:contentDescription="@string/button_text_add_reminder"
+        app:fabSize="normal"
+        app:layout_anchor="@id/remindersRecyclerView"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
