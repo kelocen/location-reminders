@@ -1,0 +1,293 @@
+<resources>
+  <!-- = = = = = Authentication Activity = = = = = -->
+  <style name="Reminders.AuthenticationActivity" parent="Reminders.Theme" />
+
+  <style name="AuthenticationActivity.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:minHeight">?actionBarSize</item>
+  </style>
+  <!-- Constraint Layout -->
+  <style name="Reminders.AuthenticationActivity.ConstraintLayout" parent="Reminders.AuthenticationActivity">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+  <!-- Logo -->
+  <style name="AuthenticationActivity.RemindersLogo" parent="Reminders.AuthenticationActivity">
+    <item name="android:layout_height">@dimen/login_screen_logo_layout_height</item>
+    <item name="android:layout_width">@dimen/login_screen_logo_layout_width</item>
+    <item name="android:layout_marginTop">@dimen/login_screen_logo_margin_top</item>
+    <item name="android:src">@drawable/reminders_logo</item>
+  </style>
+  <!-- Login Button -->
+  <style name="AuthenticationActivity.LoginButton" parent="Reminders.AuthenticationActivity">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:background">@color/colorAccent</item>
+    <item name="android:text">@string/login_button_text</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:layout_marginLeft">@dimen/margin_normal</item>
+    <item name="android:layout_marginRight">@dimen/margin_normal</item>
+    <item name="android:layout_marginBottom">@dimen/login_button_margin_bottom</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+  <!-- = = = = = Firebase Login = = = = = -->
+  <!-- Login -->
+  <style name="LoginStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+    <item name="colorPrimary">@color/colorPrimary</item>Reminders
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorButtonNormal">@color/colorAccent</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <item name="android:textColorLink">?attr/colorPrimary</item>
+  </style>
+  <!-- = = = = = Reminders Activity = = = = = -->
+  <style name="Reminders.RemindersActivity" parent="Reminders.Theme" />
+
+  <style name="RemindersActivity.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:minHeight">?actionBarSize</item>
+  </style>
+  <!-- Constraint Layout -->
+  <style name="RemindersActivity.ConstraintLayout" parent="Reminders.RemindersActivity">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+  <!-- Reminders Fragment Container -->
+  <style name="RemindersActivity.FragmentContainerView" parent="Reminders.RemindersActivity">
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:name">androidx.navigation.fragment.NavHostFragment</item>
+  </style>
+  <!-- = = = = = Reminder Description Activity = = = = = -->
+  <style name="Reminders.ReminderDescActivity" parent="Reminders.Theme" />
+  <!-- Constraint Layout -->
+  <style name="ReminderDescActivity.ConstraintLayout" parent="Reminders.ReminderDescActivity">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:gravity">center</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:padding">@dimen/padding_normal</item>
+  </style>
+  <!-- Reminder Details Text View -->
+  <style name="ReminderDescActivity.TextView" parent="Reminders.ReminderDescActivity">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">@dimen/reminder_description_text_size</item>
+  </style>
+  <!-- Reminder Details Title -->
+  <style name="ReminderDescActivity.TextView.Title" parent="ReminderDescActivity.TextView">
+    <item name="android:text">@string/text_reminder_title</item>
+    <item name="android:textSize">@dimen/text_size_extra_large</item>
+    <item name="android:layout_marginBottom">@dimen/padding_large</item>
+  </style>
+  <!-- Reminder Details Location Section Label -->
+  <style name="ReminderDescActivity.TextView.LocationSectionLabel" parent="ReminderDescActivity.TextView">
+    <item name="android:textSize">@dimen/text_size_small</item>
+    <item name="android:text">@string/text_location_details_label</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <!-- Reminder Details Location -->
+  <style name="ReminderDescActivity.TextView.Location" parent="ReminderDescActivity.TextView">
+    <item name="android:textSize">@dimen/text_size_large</item>
+    <item name="android:layout_marginTop">@dimen/padding_large</item>
+  </style>
+  <!-- Reminder Location Label -->
+  <style name="ReminderDescActivity.TextView.LocationLabel" parent="ReminderDescActivity.TextView">
+    <item name="android:textSize">@dimen/text_size_large</item>
+    <item name="android:text">@string/text_location_label</item>
+    <item name="android:layout_marginTop">@dimen/padding_large</item>
+  </style>
+  <!-- Reminder Details Latitude -->
+  <style name="ReminderDescActivity.TextView.Latitude" parent="ReminderDescActivity.TextView">
+    <item name="android:textSize">@dimen/text_size_large</item>
+    <item name="android:text">@string/text_reminder_latitude</item>
+    <item name="android:layout_marginTop">@dimen/padding_large</item>
+  </style>
+  <!-- Reminder Details Longitude -->
+  <style name="ReminderDescActivity.TextView.Longitude" parent="ReminderDescActivity.TextView">
+    <item name="android:text">@string/text_reminder_longitude</item>
+    <item name="android:layout_marginTop">@dimen/padding_large</item>
+    <item name="android:layout_marginBottom">@dimen/padding_large</item>
+  </style>
+  <!-- Reminder Details Description/Notes Section Label -->
+  <style name="ReminderDescActivity.TextView.DescSectionLabel" parent="ReminderDescActivity.TextView">
+    <item name="android:textSize">@dimen/text_size_small</item>
+    <item name="android:text">@string/text_location_notes_label</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <!-- Reminder Details Description -->
+  <style name="ReminderDescActivity.TextView.Description" parent="ReminderDescActivity.TextView">
+    <item name="android:layout_marginTop">@dimen/padding_medium</item>
+    <item name="android:gravity">left</item>
+  </style>
+  <!-- Reminder Description Delete Button -->
+  <style name="ReminderDescActivity.Button.Delete" parent="Reminders.ReminderDescActivity">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:background">@color/red</item>
+    <item name="android:text">@string/text_button_delete</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:layout_marginBottom">@dimen/login_button_margin_bottom</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+  <!-- = = = = = Reminder List Fragment = = = = = -->
+  <style name="Reminders.RemindersFragment" parent="Reminders.Theme" />
+  <!-- Save Reminder Fragment -->
+  <style name="RemindersFragment.SwipeRefreshLayout" parent="Reminders.RemindersFragment">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+  <!-- Constraint Layout -->
+  <style name="RemindersFragment.ConstraintLayout" parent="Reminders.RemindersFragment">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+  <!-- Reminders RecyclerView -->
+  <style name="RemindersFragment.RecyclerView" parent="Reminders.RemindersFragment">
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_width">match_parent</item>
+  </style>
+  <!-- No Data TextView -->
+  <style name="RemindersFragment.TextView" parent="Reminders.RemindersFragment">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:text">@string/placeholder_text_no_data</item>
+    <item name="android:textSize">@dimen/text_size_large</item>
+  </style>
+  <!-- Progress Bar -->
+  <style name="RemindersFragment.ProgressBar" parent="Reminders.RemindersFragment">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+  <!-- Add Reminders Button -->
+  <style name="RemindersFragment.RemindersButton" parent="Reminders.RemindersFragment">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_margin">@dimen/margin_normal</item>
+    <item name="android:src">@drawable/ic_add</item>
+  </style>
+  <!-- = = = = = Save Reminder Screen = = = = = -->
+  <style name="Reminders.SaveReminderFragment" parent="Reminders.Theme" />
+  <!-- Constraint Layout -->
+  <style name="SaveReminderFragment.ConstraintLayout" parent="Reminders.RemindersFragment">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:padding">@dimen/margin_normal</item>
+  </style>
+  <!-- Reminder Title -->
+  <style name="SaveReminderFragment.ReminderTitle" parent="Reminders.SaveReminderFragment">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+  </style>
+  <!-- Reminder Description -->
+  <style name="SaveReminderFragment.ReminderDescription" parent="Reminders.SaveReminderFragment">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_gravity">start</item>
+    <item name="android:lines">10</item>
+  </style>
+  <!-- Reminder Select Location TextView -->
+  <style name="SaveReminderFragment.ReminderLocationLabel" parent="Reminders.SaveReminderFragment">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:background">?attr/selectableItemBackground</item>
+    <item name="android:clickable">true</item>
+    <item name="android:drawableLeft">@drawable/ic_location</item>
+    <item name="android:focusable">true</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:text">@string/label_reminder_location</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+  <!-- Reminder Location -->
+  <style name="SaveReminderFragment.ReminderLocation" parent="Reminders.SaveReminderFragment">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_marginEnd">@dimen/margin_normal</item>
+    <item name="android:layout_marginRight">@dimen/margin_normal</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+  <!-- Save Button -->
+  <style name="SaveReminderFragment.SaveReminderButton" parent="Reminders.SaveReminderFragment">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_margin">@dimen/margin_normal</item>
+    <item name="android:src">@drawable/ic_save</item>
+  </style>
+  <!-- Progress Bar -->
+  <style name="SaveReminderFragment.ProgressBar" parent="Reminders.SaveReminderFragment">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_gravity">center</item>
+  </style>
+  <!-- = = = = = Select Location Screen = = = = = -->
+  <style name="Reminders.SelectLocationFragment" parent="Reminders.Theme" />
+  <!-- Constraint Layout -->
+  <style name="SelectLocationFragment.ConstraintLayout" parent="Reminders.SelectLocationFragment">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+  <!-- = = = = = Reminder Item = = = = = -->
+  <style name="Reminders.ReminderItem" parent="Reminders.Theme">
+    <item name="android:background">?attr/selectableItemBackground</item>
+  </style>
+  <!-- Card View -->
+  <style name="ReminderItem.CardView" parent="Reminders.ReminderItem">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_margin">@dimen/padding_medium</item>
+  </style>
+  <!-- Constraint Layout -->
+  <style name="ReminderItem.ConstraintLayout" parent="Reminders.ReminderItem">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:padding">@dimen/padding_medium</item>
+  </style>
+  <!-- Title TextView -->
+  <style name="ReminderItem.TitleTextView" parent="Reminders.ReminderItem">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_marginStart">@dimen/padding_small</item>
+    <item name="android:layout_marginLeft">@dimen/padding_small</item>
+    <item name="android:textSize">@dimen/text_size_normal</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <!-- Description TextView -->
+  <style name="ReminderItem.Description" parent="Reminders.ReminderItem">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">@dimen/text_size_small</item>
+  </style>
+  <!-- Location TextView -->
+  <style name="ReminderItem.Location" parent="Reminders.ReminderItem">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textColor">@color/colorAccent</item>
+    <item name="android:textSize">@dimen/text_size_small</item>
+  </style>
+  <!-- = = = = = Map Marker Info Window = = = = = -->
+  <!-- Marker Info Window Title  -->
+  <style name="Marker.InfoWindow.Title" parent="Reminders.Theme">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:gravity">center</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">@dimen/marker_info_window_title_text_size</item>
+  </style>
+  <!-- Marker Info Window Address  -->
+  <style name="Marker.InfoWindow.Address" parent="Reminders.Theme">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:gravity">center</item>
+    <item name="android:maxLines">10</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">@dimen/marker_info_window_address_text_size</item>
+  </style>
+</resources>

@@ -1,0 +1,73 @@
+<resources>
+  <!-- General -->
+  <string name="app_name">Reminders</string>
+  <!-- Notifications -->
+  <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
+  <!-- Error strings -->
+  <string name="geofence_unknown_error">Unknown error: the Geofence service is not available now.</string>
+  <string name="geofence_not_available">Geofence service is not available now. Go to Settings>Location>Mode and choose High accuracy.</string>
+  <string name="geofence_too_many_geofences">Your app has registered too many geofences.</string>
+  <string name="geofence_too_many_pending_intents">You have provided too many PendingIntents to the addGeofences() call.</string>
+  <string name="error_adding_geofence">Error Happened, Can\'t Add Geofence</string>
+  <string name="err_enter_title">Please enter title</string>
+  <string name="err_select_location">Please select location</string>
+  <string name="error_last_location_null">We were unable to automatically retrieve your location. This can happen if you\'ve recently disabled location services. \n\nPlease tap the location button to try again.</string>
+  <string name="geofences_null_or_empty">Warning: No Geofence Trigger Found! Abort mission!</string>
+  <!-- Authentication Screen -->
+  <string name="the_reminders_logo">The Reminders logo.</string>
+  <string name="login_button_text">Login</string>
+  <!-- Reminders Screen -->
+  <string name="button_text_logout">Logout</string>
+  <string name="button_text_add_reminder">Add reminder button.</string>
+  <string name="placeholder_text_no_data">No Data</string>
+
+  <!-- - - - - - - - - Save Reminder Screen - - - - - - - - -->
+  <string name="text_desc_save_reminder">Save Reminder</string>
+  <string name="snack_background_access_explanation">Reminders needs location permissions allowed all the time to work properly.</string>
+  <string name="alert_background_access_explanation">Reminders uses background location access to send you location-based notifications. To enable background location access, location permissions must be allowed all the time.</string>
+  <string name="toast_geofence_added">Geofence Added!</string>
+  <string name="uri_package_scheme">package</string>
+  <string name="hint_reminder_title">Reminder Title</string>
+  <string name="hint_reminder_desc">Description</string>
+  <string name="label_reminder_location">Reminder Location</string>
+  <string name="reminder_saved">Reminder Saved!</string>
+  <string name="snack_settings">Settings</string>
+
+  <!-- - - - - - - - - Select Location Screen - - - - - - - - -->
+  <string name="text_desc_select_location">Select Location</string>
+  <string name="snack_permission_denied_explanation">You need to grant location permission in order to select the location.</string>
+  <string name="toast_select_location">Please select a location or point of interest.</string>
+  <string name="toast_select_window">Select the marker\'s information window for additional options.</string>
+  <string name="marker_title_dropped_pin">Dropped Pin</string>
+  <!-- Location Marker Alert Dialog Options -->
+  <string name="alert_add_location">Add</string>
+  <string name="alert_delete_location">Delete</string>
+  <string name="alert_cancel_dialog">Cancel</string>
+  <string name="alert_prompt_for_option">What would you like to do with this location?</string>
+  <!-- Map Menu -->
+  <string name="menu_normal_map">Normal Map</string>
+  <string name="menu_hybrid_map">Hybrid Map</string>
+  <string name="menu_satellite_map">Satellite Map</string>
+  <string name="menu_terrain_map">Terrain Map</string>
+  <string name="menu_night_map">Night Map</string>
+  <string name="map_style_normal">map_style_normal</string>
+  <string name="map_style_normal_night">map_style_normal_night</string>
+  <string name="resource_def_type">raw</string>
+  <string name="toggle_toast_tips">Toggle Tips</string>
+  <string name="toast_tips_off">Toast Tips Disabled</string>
+  <string name="toast_tips_on">Toast Tips Enabled</string>
+  <!-- Reminder Details Screen -->
+  <string name="text_reminder_title">Reminder Title</string>
+  <string name="text_location_label">Location:</string>
+  <string name="text_reminder_latitude">Latitude:</string>
+  <string name="text_reminder_longitude">Longitude:</string>
+  <string name="text_button_delete">Delete</string>
+  <string name="text_location_details_label">Location Details</string>
+  <string name="text_location_notes_label">Location Notes</string>
+  <!-- Marker Info Window-->
+  <string name="reminder_info_window">Reminder Info Window</string>
+  <string name="marker_title">Marker Title</string>
+  <string name="marker_address">Marker Address</string>
+  <string name="take_a_picture">Take a picture.</string>
+  <string name="google_map">Google Map</string>
+</resources>
