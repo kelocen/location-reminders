@@ -11,7 +11,7 @@
   <fragment
     android:id="@+id/reminderListFragment"
     android:label="ReminderListFragment"
-    android:name="dev.kelocen.reminders.locationreminders.reminderslist.ReminderListFragment">
+    android:name="dev.kelocen.reminders.locationreminders.reminderslist.RemindersListFragment">
     <action
       android:id="@+id/to_save_reminder"
       app:destination="@id/saveReminderFragment" />
