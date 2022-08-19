@@ -9,78 +9,71 @@
       type="dev.kelocen.reminders.locationreminders.savereminder.SaveReminderViewModel" />
   </data>
 
+  <!-- Constraint Layout -->
   <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:id="@+id/constraint_layout_save_reminder"
+    style="@style/SaveReminderFragment.ConstraintLayout">
 
+    <!-- Reminder Title -->
     <EditText
       android:id="@+id/reminderTitle"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/text_reminder_title"
+      style="@style/SaveReminderFragment.ReminderTitle"
+      android:autofillHints="Title"
+      android:hint="@string/hint_reminder_title"
+      android:inputType="text"
       android:text="@={viewModel.reminderTitle}"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Reminder Description -->
     <EditText
       android:id="@+id/reminderDescription"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:gravity="start"
-      android:hint="@string/text_desc_save_reminder"
-      android:lines="10"
+      style="@style/SaveReminderFragment.ReminderDescription"
+      android:autofillHints="Description"
+      android:hint="@string/hint_reminder_desc"
+      android:inputType="text"
       android:text="@={viewModel.reminderDescription}"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/reminderTitle" />
 
+    <!-- Reminder Location Label -->
     <TextView
       android:id="@+id/selectLocation"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="?attr/selectableItemBackground"
-      android:clickable="true"
-      android:drawableLeft="@drawable/ic_location"
-      android:drawableStart="@drawable/ic_location"
-      android:focusable="true"
-      android:gravity="center_vertical"
-      android:text="@string/text_desc_select_location"
-      android:textColor="@color/black"
+      style="@style/SaveReminderFragment.ReminderLocationLabel"
+      android:contentDescription="@string/text_desc_select_location"
+      app:drawableLeftCompat="@drawable/ic_location"
+      app:drawableStartCompat="@drawable/ic_location"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/reminderDescription" />
 
+    <!-- Reminder Location -->
     <TextView
       android:id="@+id/selectedLocation"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/margin_normal"
-      android:layout_marginRight="@dimen/margin_normal"
+      style="@style/SaveReminderFragment.ReminderLocation"
       android:text="@{viewModel.reminderSelectedLocationStr}"
-      android:textColor="@color/black"
       app:layout_constraintBottom_toBottomOf="@id/selectLocation"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="@id/selectLocation"
       tools:text="Location" />
 
+    <!-- Save Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:id="@+id/saveReminder"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/margin_normal"
+      style="@style/SaveReminderFragment.SaveReminderButton"
+      android:contentDescription="@string/text_desc_save_reminder"
       android:fadeVisible="@{!viewModel.showLoading.booleanValue()}"
-      android:src="@drawable/ic_save"
       app:fabSize="normal"
       app:layout_anchorGravity="bottom|right|end"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Progress Bar -->
     <ProgressBar
       android:id="@+id/progressBar"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
+      style="@style/SaveReminderFragment.ProgressBar"
       android:fadeVisible="@{viewModel.showLoading.booleanValue()}"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
