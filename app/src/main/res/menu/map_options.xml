@@ -15,6 +15,17 @@
     app:showAsAction="never" />
   <item
     android:id="@+id/terrain_map"
-    android:title="@string/menu_satellite_map"
+    android:title="@string/menu_terrain_map"
     app:showAsAction="never" />
+
+  <item
+    android:id="@+id/toggle_night_map"
+    android:title="@string/menu_night_map"
+    app:showAsAction="never" />
+
+  <item
+    android:id="@+id/toggle_toast_tips"
+    android:icon="@drawable/ic_enabled_toast_tips"
+    android:title="@string/toggle_toast_tips"
+    app:showAsAction="ifRoom" />
 </menu>

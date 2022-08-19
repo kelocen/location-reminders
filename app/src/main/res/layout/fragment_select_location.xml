@@ -1,18 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-
     <variable
       name="viewModel"
       type="dev.kelocen.reminders.locationreminders.savereminder.SaveReminderViewModel" />
   </data>
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <!--TODO: Add the map fragment for the user to select the location-->
+  <!-- Constraint Layout -->
+  <androidx.constraintlayout.widget.ConstraintLayout style="@style/SelectLocationFragment.ConstraintLayout">
 
+    <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/map"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:contentDescription="@string/google_map"
+      android:name="com.google.android.gms.maps.SupportMapFragment" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
