@@ -4,30 +4,133 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <data>
+    <import type="dev.kelocen.reminders.utils.Converter" />
     <!--Data item that holds the reminder details-->
     <variable
       name="reminderDataItem"
       type="dev.kelocen.reminders.locationreminders.reminderslist.ReminderDataItem" />
   </data>
 
-  <LinearLayout
+  <!-- Reminders Description Layout -->
+  <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".locationreminders.ReminderDescriptionActivity">
-    <!--TODO: add the design of the reminder details-->
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+      style="@style/ReminderDescActivity.ConstraintLayout"
+      tools:context=".locationreminders.ReminderDescriptionActivity">
 
-    <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:gravity="center"
-      android:text="Reminder Details"
-      android:textSize="@dimen/text_size_large"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      <!-- Reminder Title -->
+      <TextView
+        android:id="@+id/text_title"
+        style="@style/ReminderDescActivity.TextView.Title"
+        android:text="@={reminderDataItem.title}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-  </LinearLayout>
+      <!-- Reminder Location -->
+      <TextView
+        android:id="@+id/text_location"
+        style="@style/ReminderDescActivity.TextView.Location"
+        android:text="@={reminderDataItem.location}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:text="Golden Gate Bridge" />
+
+      <!-- Reminder Latitude -->
+      <TextView
+        android:id="@+id/text_latitude"
+        style="@style/ReminderDescActivity.TextView.Latitude"
+        android:text="@={Converter.doubleToString(reminderDataItem.latitude)}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_location"
+        tools:text="37.82014" />
+
+      <!-- Reminder Longitude -->
+      <TextView
+        android:id="@+id/text_longitude"
+        style="@style/ReminderDescActivity.TextView.Longitude"
+        android:text="@={Converter.doubleToString(reminderDataItem.longitude)}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_latitude"
+        tools:text="-122.47821" />
+
+      <!-- Description/Notes Section Label-->
+      <TextView
+        android:id="@+id/text_notes_section_label"
+        style="@style/ReminderDescActivity.TextView.DescSectionLabel"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <!-- Reminder Description -->
+      <TextView
+        android:id="@+id/text_description"
+        style="@style/ReminderDescActivity.TextView.Description"
+        android:text="@={reminderDataItem.description}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        tools:text="Reminder Description" />
+
+      <!-- Location Details Section Label -->
+      <TextView
+        android:id="@+id/text_location_section_label"
+        style="@style/ReminderDescActivity.TextView.LocationSectionLabel"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <!-- Location Label -->
+      <TextView
+        android:id="@+id/text_location_label"
+        style="@style/ReminderDescActivity.TextView.LocationLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/text_location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_location_section_label" />
+
+      <!-- Latitude Label -->
+      <TextView
+        android:id="@+id/text_latitude_label"
+        style="@style/ReminderDescActivity.TextView.Latitude"
+        app:layout_constraintBottom_toBottomOf="@+id/text_latitude"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_location_label" />
+
+      <!-- Longitude Label -->
+      <TextView
+        android:id="@+id/text_longitude_label"
+        style="@style/ReminderDescActivity.TextView.Longitude"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_latitude_label" />
+
+      <!-- Delete Button -->
+      <Button
+        android:id="@+id/button_delete"
+        style="@style/ReminderDescActivity.Button.Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <!-- Guide -->
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="88dp" />
+
+      <!-- Guide -->
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="337dp" />
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="514dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>
 </layout>
