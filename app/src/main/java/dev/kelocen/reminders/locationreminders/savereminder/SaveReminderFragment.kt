@@ -152,18 +152,22 @@ class SaveReminderFragment : BaseFragment() {
      * Requests permissions for background location.
      */
     private fun requestBackgroundLocationPermissions(permissions: Array<String>) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val builder = AlertDialog.Builder(requireActivity())
-                .setMessage(getString(R.string.alert_background_access_explanation))
-                .setPositiveButton(getString(android.R.string.ok), null)
+        val builder = AlertDialog.Builder(requireActivity())
+            .setMessage(getString(R.string.alert_background_access_explanation))
+            .setPositiveButton(getString(android.R.string.ok), null)
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
             builder.setOnDismissListener {
                 requestPermissions(
                     permissions,
                     FOREGROUND_AND_BACKGROUND_RESULT_CODE
                 )
             }
-            builder.show()
+        } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            builder.setOnDismissListener {
+                openApplicationSettings()
+            }
         }
+        builder.show()
     }
 
     /**
@@ -177,15 +181,7 @@ class SaveReminderFragment : BaseFragment() {
                     snackMessage,
                     Snackbar.LENGTH_INDEFINITE
                 ).setAction(R.string.snack_settings) {
-                    startActivity(Intent().apply {
-                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        data = Uri.fromParts(
-                            getString(R.string.uri_package_scheme),
-                            BuildConfig.APPLICATION_ID,
-                            null
-                        )
-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    })
+                    openApplicationSettings()
                 }
             }
             SNACK_CHECK_SETTINGS -> {
@@ -203,6 +199,22 @@ class SaveReminderFragment : BaseFragment() {
         }
     }
 
+    /**
+     * Opens the settings of the application.
+     */
+    private fun openApplicationSettings() {
+        startActivity(Intent().apply {
+            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            data = Uri.fromParts(
+                getString(R.string.uri_package_scheme),
+                BuildConfig.APPLICATION_ID,
+                null
+            )
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        })
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

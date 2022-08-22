@@ -35,7 +35,7 @@
 
   <!-- - - - - - - - - Select Location Screen - - - - - - - - -->
   <string name="text_desc_select_location">Select Location</string>
-  <string name="snack_permission_denied_explanation">You need to grant location permission in order to select the location.</string>
+  <string name="snack_permission_denied_explanation">You need to grant location permissions in order to select the location.</string>
   <string name="toast_select_location">Please select a location or point of interest.</string>
   <string name="toast_select_window">Select the marker\'s information window for additional options.</string>
   <string name="marker_title_dropped_pin">Dropped Pin</string>
