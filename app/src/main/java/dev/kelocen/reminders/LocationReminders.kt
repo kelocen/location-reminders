@@ -3,6 +3,8 @@
 package dev.kelocen.reminders
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
 import dev.kelocen.reminders.locationreminders.data.ReminderDataSource
 import dev.kelocen.reminders.locationreminders.data.local.LocalDB
 import dev.kelocen.reminders.locationreminders.data.local.RemindersLocalRepository
@@ -42,5 +44,10 @@ class LocationReminders : Application() {
             modules(listOf(myModule))
         }
         Timber.plant(Timber.DebugTree())
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }
