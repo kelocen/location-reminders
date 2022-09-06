@@ -33,7 +33,7 @@ android {
         }
         minApi16 {
             dimension 'api'
-            minSdk rootProject.minSdkVersion
+            minSdkVersion rootProject.minSdkVersion
             targetSdkVersion rootProject.targetSdkVersion
             compileSdk rootProject.compileSdkVersion
         }
