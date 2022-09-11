@@ -12,33 +12,18 @@ localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 def googleMapsApiKey = localProperties.getProperty('MAPS_API_KEY')
 
 android {
-    buildToolsVersion "30.0.3"
 
     defaultConfig {
+        buildToolsVersion "30.0.3"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        compileSdk rootProject.compileSdkVersion
         applicationId "dev.kelocen.locationreminders"
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    flavorDimensions 'api'
-
-    productFlavors {
-        minApi18 {
-            dimension 'api'
-            minSdkVersion 18
-            targetSdkVersion rootProject.targetSdkVersion
-            compileSdk rootProject.compileSdkVersion
-        }
-        minApi16 {
-            dimension 'api'
-            minSdkVersion rootProject.minSdkVersion
-            targetSdkVersion rootProject.targetSdkVersion
-            compileSdk rootProject.compileSdkVersion
-        }
-    }
-
     buildTypes {
         debug {
             // Requires that a valid API key be placed in the local.properties file.

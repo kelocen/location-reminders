@@ -48,6 +48,20 @@ class LocationReminders : Application() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
-        MultiDex.install(this)
+        try {
+            MultiDex.install(this)
+        } catch (multiDexException: RuntimeException) {
+            try {
+                Class.forName("org.robolectric.Robolectric")
+            } catch (ex: ClassNotFoundException) {
+                throw multiDexException
+            }
+        }
+        /* Attribution
+         * Content: Workaround for multidex installation failure with Robolectric tests.
+         * Author: DimaSkopiuk
+         * Date: 10/9/2018
+         * Location: https://github.com/robolectric/robolectric/issues/3946
+         */
     }
 }
