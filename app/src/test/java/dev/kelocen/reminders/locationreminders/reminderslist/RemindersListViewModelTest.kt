@@ -50,7 +50,7 @@ class RemindersListViewModelTest {
      * A [test][Test] function for [loadReminders][RemindersListViewModel.loadReminders] and [showLoading][RemindersListViewModel.showLoading].
      */
     @Test
-    fun nothing_loadReminders_showLoading() = mainCoroutineRule.runBlockingTest {
+    fun nothing_loadReminders_checkLoading() = mainCoroutineRule.runBlockingTest {
         // Given
         nothing
         pauseDispatcher()
