@@ -4,11 +4,12 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-    <import type="dev.kelocen.reminders.utils.Converter" />
-    <!--Data item that holds the reminder details-->
-    <variable
-      name="reminderDataItem"
-      type="dev.kelocen.reminders.locationreminders.reminderslist.ReminderDataItem" />
+
+      <import type="com.udacity.project4.utils.Converter" />
+      <!--Data item that holds the reminder details-->
+      <variable
+          name="reminderDataItem"
+          type="com.udacity.project4.locationreminders.reminderslist.ReminderDataItem" />
   </data>
 
   <!-- Reminders Description Layout -->

@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:531341389821:android:8c3b2e4c9ffb6b1f107394",
+        "mobilesdk_app_id": "1:531341389821:android:2939230ceacbec9d107394",
         "android_client_info": {
-          "package_name": "dev.kelocen.locationreminders"
+          "package_name": "com.udacity.project4"
         }
       },
       "oauth_client": [
         {
-          "client_id": "531341389821-js9ck3og9uv8sdomm4tsr9u438hfv4n6.apps.googleusercontent.com",
+          "client_id": "531341389821-ndbu5l1781i01f0pmc1ep3ib29n67qpm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "dev.kelocen.locationreminders",
+            "package_name": "com.udacity.project4",
             "certificate_hash": "f00681d8d18f8a5ac6b4466e133f77e98d53c451"
           }
         },
@@ -27,6 +27,9 @@
         }
       ],
       "api_key": [
+        {
+          "current_key": "***REMOVED***"
+        },
         {
           "current_key": "***REMOVED***"
         }

@@ -5,8 +5,8 @@
 
   <data>
     <variable
-      name="viewModel"
-      type="dev.kelocen.reminders.locationreminders.reminderslist.RemindersListViewModel" />
+        name="viewModel"
+        type="com.udacity.project4.locationreminders.reminderslist.RemindersListViewModel" />
   </data>
 
   <!-- Swipe Refresh Layout -->
