@@ -6,8 +6,8 @@
   <data>
 
     <variable
-      name="item"
-      type="dev.kelocen.reminders.locationreminders.reminderslist.ReminderDataItem" />
+        name="item"
+        type="com.udacity.project4.locationreminders.reminderslist.ReminderDataItem" />
   </data>
 
   <!-- Reminder Item CardView -->
