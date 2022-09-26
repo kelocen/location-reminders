@@ -5,8 +5,8 @@
 
   <data>
     <variable
-      name="viewModel"
-      type="dev.kelocen.reminders.locationreminders.savereminder.SaveReminderViewModel" />
+        name="viewModel"
+        type="com.udacity.project4.locationreminders.savereminder.SaveReminderViewModel" />
   </data>
 
   <!-- Constraint Layout -->
