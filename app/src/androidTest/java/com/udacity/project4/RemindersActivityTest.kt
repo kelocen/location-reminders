@@ -34,7 +34,9 @@ import com.udacity.project4.locationreminders.reminderslist.RemindersListViewMod
 import com.udacity.project4.locationreminders.savereminder.SaveReminderViewModel
 import com.udacity.project4.util.DataBindingIdlingResource
 import com.udacity.project4.util.monitorActivity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -119,13 +121,19 @@ class RemindersActivityTest :
         dataBindingIdlingResource.monitorActivity(scenario)
         // When
         onView(withId(R.id.noDataTextView)).check(matches(isDisplayed()))
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         onView(withId(R.id.addReminderFAB)).perform(click())
         onView(withId(R.id.saveReminder)).check(matches(isDisplayed()))
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         onView(withId(R.id.selectLocation)).perform(click())
         onView(withId(R.id.map)).check(matches(isDisplayed()))
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         // Then
         val position = getCenterPoint(device)
         if (position != null) {
@@ -142,25 +150,41 @@ class RemindersActivityTest :
         } else {                                                    // Click position for devices
             device.click(width / 2, (height * 0.49).toInt())
         }
-        Thread.sleep(3700)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(3700)
+        }
         onView(withId(android.R.id.button1)).perform(click())
-        Thread.sleep(3700)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(3700)
+        }
         onView(withId(R.id.saveReminder)).check(matches(isDisplayed()))
         onView(withId(R.id.reminderTitle)).perform(typeText(droppedPin))
-        Thread.sleep(2700)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(2700)
+        }
         onView(withId(R.id.reminderDescription)).perform(typeText(takePicture))
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         closeSoftKeyboard()
         onView(withId(R.id.saveReminder)).perform(click())
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         onView(withId(R.id.noDataTextView)).check(matches(withEffectiveVisibility(Visibility.GONE)))
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         // Use the map to wake location services and trigger the notification.
         onView(withId(R.id.addReminderFAB)).perform(click())
         onView(withId(R.id.saveReminder)).check(matches(isDisplayed()))
-        Thread.sleep(4000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(4000)
+        }
         onView(withId(R.id.selectLocation)).perform(click())
-        Thread.sleep(6000)
+        withContext(Dispatchers.IO) {
+            Thread.sleep(6000)
+        }
     }
 
     /**
