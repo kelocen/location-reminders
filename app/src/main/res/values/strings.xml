@@ -24,6 +24,7 @@
   <!-- - - - - - - - - Save Reminder Screen - - - - - - - - -->
   <string name="text_desc_save_reminder">Save Reminder</string>
   <string name="snack_background_access_explanation">Reminders needs location permissions allowed all the time to work properly.</string>
+  <string name="snack_location_settings_explanation">Reminders needs to turn on location services.</string>
   <string name="alert_background_access_explanation">Reminders uses background location access to send you location-based notifications. To enable background location access, location permissions must be allowed all the time.</string>
   <string name="toast_geofence_added">Geofence Added!</string>
   <string name="uri_package_scheme">package</string>

@@ -216,6 +216,14 @@ class SaveReminderFragment : BaseFragment() {
     }
 
     @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_TURN_DEVICE_LOCATION_ON) {
+            checkSettingsAndStartGeoFence(false)
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -227,6 +235,8 @@ class SaveReminderFragment : BaseFragment() {
         } else if (isBackgroundLocationDenied(requestCode, grantResults)) {
             makeSnack(R.string.snack_background_access_explanation, SNACK_PERMISSIONS)
             snackbar?.show()
+        } else {
+            checkSettingsAndStartGeoFence()
         }
     }
 
@@ -256,15 +266,23 @@ class SaveReminderFragment : BaseFragment() {
         locationSettingsResponseTask.addOnFailureListener { exception ->
             if (exception is ResolvableApiException && resolve) {
                 try {
-                    exception.startResolutionForResult(
-                        requireActivity(),
-                        REQUEST_TURN_DEVICE_LOCATION_ON
+                    startIntentSenderForResult(
+                        exception.resolution.intentSender,
+                        REQUEST_TURN_DEVICE_LOCATION_ON,
+                        null,
+                        0,
+                        0,
+                        0,
+                        null
                     )
                 } catch (sendEx: IntentSender.SendIntentException) {
                     Timber.d("Error getting location settings resolution$sendEx")
                 }
             } else {
-                makeSnack(android.R.string.ok, SNACK_CHECK_SETTINGS)
+                makeSnack(
+                    R.string.snack_location_settings_explanation,
+                    SNACK_CHECK_SETTINGS
+                )
                 snackbar?.show()
             }
         }
