@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 import org.koin.core.context.stopKoin
 import org.robolectric.annotation.Config
 
-@Config(manifest = "src/main/AndroidManifest.xml")
+@Config(manifest = "AndroidManifest.xml")
 @RunWith(AndroidJUnit4::class)
 @ExperimentalCoroutinesApi
 @MediumTest

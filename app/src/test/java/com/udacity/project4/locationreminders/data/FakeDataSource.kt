@@ -39,10 +39,7 @@ class FakeDataSource : ReminderDataSource {
         if (shouldReturnError) {
             return Result.Error(Exception("Reminder Exception!").toString())
         }
-        reminders?.let { reminders ->
-            return Result.Success(ArrayList(reminders))
-        }
-        return Result.Error(Exception("Reminders not found!").toString())
+        return Result.Success(ArrayList(reminders!!))
     }
 
     override suspend fun deleteAllReminders() {
