@@ -19,6 +19,8 @@ import com.udacity.project4.locationreminders.data.local.LocalDB
 import com.udacity.project4.locationreminders.data.local.RemindersLocalRepository
 import com.udacity.project4.locationreminders.data.local.asReminderDTO
 import com.udacity.project4.locationreminders.data.local.fakeReminderData
+import com.udacity.project4.util.DataBindingIdlingResource
+import com.udacity.project4.util.monitorFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -45,6 +47,8 @@ class SaveReminderFragmentTest : KoinTest {
 
     private lateinit var reminders: MutableList<ReminderDTO>
     private lateinit var dataSource: ReminderDataSource
+    private val dataBindingIdlingResource = DataBindingIdlingResource()
+
 
     @Before
     fun setupSaveReminderFragmentTest() {
@@ -87,6 +91,7 @@ class SaveReminderFragmentTest : KoinTest {
         scenario.onFragment { saveReminderFragment ->
             Navigation.setViewNavController(saveReminderFragment.view!!, mockNavController)
         }
+        dataBindingIdlingResource.monitorFragment(scenario)
         onView(withId(R.id.reminderTitle))
             .perform(typeText(reminder.title))
             .perform(closeSoftKeyboard())
@@ -111,6 +116,7 @@ class SaveReminderFragmentTest : KoinTest {
         scenario.onFragment { saveReminderFragment ->
             Navigation.setViewNavController(saveReminderFragment.view!!, mockNavController)
         }
+        dataBindingIdlingResource.monitorFragment(scenario)
         // When
         onView(withId(R.id.saveReminder)).perform(click())
         // Then
@@ -129,6 +135,7 @@ class SaveReminderFragmentTest : KoinTest {
         scenario.onFragment { saveReminderFragment ->
             Navigation.setViewNavController(saveReminderFragment.view!!, mockNavController)
         }
+        dataBindingIdlingResource.monitorFragment(scenario)
         val reminder = reminders[0]
         onView(withId(R.id.reminderTitle))
             .perform(typeText(reminder.title))

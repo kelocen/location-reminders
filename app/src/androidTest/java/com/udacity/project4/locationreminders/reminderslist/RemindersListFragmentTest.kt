@@ -19,6 +19,8 @@ import com.udacity.project4.locationreminders.data.local.LocalDB
 import com.udacity.project4.locationreminders.data.local.RemindersLocalRepository
 import com.udacity.project4.locationreminders.data.local.asReminderDTO
 import com.udacity.project4.locationreminders.data.local.fakeReminderData
+import com.udacity.project4.util.DataBindingIdlingResource
+import com.udacity.project4.util.monitorFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.not
@@ -47,7 +49,9 @@ class RemindersListFragmentTest : KoinTest {
 
     private lateinit var reminders: MutableList<ReminderDTO>
     private lateinit var dataSource: ReminderDataSource
+    private val dataBindingIdlingResource = DataBindingIdlingResource()
     private val nothing: Unit = Unit
+
 
     @Before
     fun setupReminderListFragmentTest() {
@@ -89,6 +93,7 @@ class RemindersListFragmentTest : KoinTest {
         scenario.onFragment { reminderListFragment ->
             Navigation.setViewNavController(reminderListFragment.view!!, mockNavController)
         }
+        dataBindingIdlingResource.monitorFragment(scenario)
         // When
         onView(withId(R.id.addReminderFAB)).perform(click())
         // Then
@@ -124,6 +129,7 @@ class RemindersListFragmentTest : KoinTest {
         scenario.onFragment { reminderListFragment ->
             Navigation.setViewNavController(reminderListFragment.view!!, mockNavController)
         }
+        dataBindingIdlingResource.monitorFragment(scenario)
         // Then
         onView(withId(R.id.noDataTextView)).check(matches(not(isDisplayed())))
         for (reminder in reminders) {
