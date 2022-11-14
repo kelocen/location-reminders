@@ -222,6 +222,12 @@ class RemindersActivityTest :
      * A [test][Test] function to confirm toast messages are visible.
      */
     private fun reminderScreen_saveReminder_confirmToastMessage(message: Int) {
+        /* Attribution
+        * Content: Testing toast message with Espresso
+        * Author: kowalcj0
+        * Date: 11/13/2022
+        * Location: https://stackoverflow.com/questions/28390574/checking-toast-message-in-android-espresso/28606603#28606603
+         */
         onView(withText(message)).inRoot(
             withDecorView(
                 not(
