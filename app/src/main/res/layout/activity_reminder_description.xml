@@ -25,7 +25,7 @@
       <TextView
         android:id="@+id/text_title"
         style="@style/ReminderDescActivity.TextView.Title"
-        android:text="@={reminderDataItem.title}"
+        android:text="@{reminderDataItem.title}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
       <TextView
         android:id="@+id/text_location"
         style="@style/ReminderDescActivity.TextView.Location"
-        android:text="@={reminderDataItem.location}"
+        android:text="@{reminderDataItem.location}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         tools:text="Golden Gate Bridge" />
@@ -43,7 +43,7 @@
       <TextView
         android:id="@+id/text_latitude"
         style="@style/ReminderDescActivity.TextView.Latitude"
-        android:text="@={Converter.doubleToString(reminderDataItem.latitude)}"
+        android:text="@{Converter.doubleToString(reminderDataItem.latitude)}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_location"
         tools:text="37.82014" />
@@ -52,7 +52,7 @@
       <TextView
         android:id="@+id/text_longitude"
         style="@style/ReminderDescActivity.TextView.Longitude"
-        android:text="@={Converter.doubleToString(reminderDataItem.longitude)}"
+        android:text="@{Converter.doubleToString(reminderDataItem.longitude)}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_latitude"
         tools:text="-122.47821" />
@@ -68,7 +68,7 @@
       <TextView
         android:id="@+id/text_description"
         style="@style/ReminderDescActivity.TextView.Description"
-        android:text="@={reminderDataItem.description}"
+        android:text="@{reminderDataItem.description}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         tools:text="Reminder Description" />
