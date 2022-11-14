@@ -1,7 +1,7 @@
 package com.udacity.project4.locationreminders.savereminder
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.udacity.project4.R
@@ -44,7 +44,7 @@ class SaveReminderViewModelTest {
     fun setupViewModelTest() {
         stopKoin()
         dataSource = FakeDataSource()
-        viewModel = SaveReminderViewModel(ApplicationProvider.getApplicationContext(), dataSource)
+        viewModel = SaveReminderViewModel(getApplicationContext(), dataSource)
         reminders = fakeReminderData.asReminderDataItem()
     }
 

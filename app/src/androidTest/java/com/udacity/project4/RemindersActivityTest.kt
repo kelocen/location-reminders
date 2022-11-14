@@ -13,6 +13,7 @@ import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
@@ -22,6 +23,7 @@ import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.UiSelector
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.udacity.project4.locationreminders.RemindersActivity
 import com.udacity.project4.locationreminders.data.ReminderDataSource
 import com.udacity.project4.locationreminders.data.dto.ReminderDTO
@@ -37,6 +39,8 @@ import com.udacity.project4.util.monitorActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -119,27 +123,41 @@ class RemindersActivityTest :
         val takePicture = appContext.getString(R.string.take_a_picture)
         val scenario = ActivityScenario.launch(RemindersActivity::class.java)
         dataBindingIdlingResource.monitorActivity(scenario)
-        // When
+
+        // When: No reminders are present
         onView(withId(R.id.noDataTextView)).check(matches(isDisplayed()))
         withContext(Dispatchers.IO) {
             Thread.sleep(4000)
         }
+        // Then: Click the 'Add Reminder' button
         onView(withId(R.id.addReminderFAB)).perform(click())
+
+        // When: The 'Save Reminder' button is visible.
         onView(withId(R.id.saveReminder)).check(matches(isDisplayed()))
         withContext(Dispatchers.IO) {
             Thread.sleep(4000)
         }
+        // Then: Click the 'Select Location' button.
         onView(withId(R.id.selectLocation)).perform(click())
+
+        // When: The map is visible on the screen.
         onView(withId(R.id.map)).check(matches(isDisplayed()))
+        // Then: Test 'Select Location' toast message.
+        reminderScreen_saveReminder_confirmToastMessage(R.string.toast_select_location)
         withContext(Dispatchers.IO) {
             Thread.sleep(4000)
         }
-        // Then
+        // Then: Get the center of the screen.
         val position = getCenterPoint(device)
+        // Then: Drop a map marker on the center of the screen.
         if (position != null) {
             device.swipe(position.x, position.y, position.x, position.y, 100)
         }
+        // Then: Click the map marker.
         device.findObject(UiSelector().descriptionContains(droppedPin)).click()
+        // Then: Test the 'Select Window' toast message.
+        reminderScreen_saveReminder_confirmToastMessage(R.string.toast_select_window)
+        // Then: Click the map marker's info window.
         if (Build.FINGERPRINT.contains("generic")) {          // Click position for emulators
             device.click(width / 2, (height * 0.43).toInt())
             /* Attribution
@@ -153,28 +171,41 @@ class RemindersActivityTest :
         withContext(Dispatchers.IO) {
             Thread.sleep(3700)
         }
+        // Then: Click the 'Add' button in the map marker info window.
         onView(withId(android.R.id.button1)).perform(click())
         withContext(Dispatchers.IO) {
             Thread.sleep(3700)
         }
+
+        // When: The 'Save Reminder' button is visible
         onView(withId(R.id.saveReminder)).check(matches(isDisplayed()))
+        // Then: Enter the reminder title.
         onView(withId(R.id.reminderTitle)).perform(typeText(droppedPin))
         withContext(Dispatchers.IO) {
             Thread.sleep(2700)
         }
+        closeSoftKeyboard()
+        // Then: Enter the reminder description.
         onView(withId(R.id.reminderDescription)).perform(typeText(takePicture))
         withContext(Dispatchers.IO) {
             Thread.sleep(4000)
         }
         closeSoftKeyboard()
+        // Then: Click the 'Save Reminder' button.
         onView(withId(R.id.saveReminder)).perform(click())
+        // Then: Test the 'Geofence Added' toast message.
+        reminderScreen_saveReminder_confirmToastMessage(R.string.toast_geofence_added)
         withContext(Dispatchers.IO) {
             Thread.sleep(4000)
         }
+        // Then: Test the 'Reminder Saved' toast message.
+        reminderScreen_saveReminder_confirmToastMessage(R.string.toast_reminder_saved)
+        // Then: Confirm the reminder list is no longer empty.
         onView(withId(R.id.noDataTextView)).check(matches(withEffectiveVisibility(Visibility.GONE)))
         withContext(Dispatchers.IO) {
             Thread.sleep(4000)
         }
+
         // Use the map to wake location services and trigger the notification.
         onView(withId(R.id.addReminderFAB)).perform(click())
         onView(withId(R.id.saveReminder)).check(matches(isDisplayed()))
@@ -185,6 +216,21 @@ class RemindersActivityTest :
         withContext(Dispatchers.IO) {
             Thread.sleep(6000)
         }
+    }
+
+    /**
+     * A [test][Test] function to confirm toast messages are visible.
+     */
+    private fun reminderScreen_saveReminder_confirmToastMessage(message: Int) {
+        onView(withText(message)).inRoot(
+            withDecorView(
+                not(
+                    `is`(
+                        getActivity(appContext)?.window?.decorView
+                    )
+                )
+            )
+        ).check(matches(isDisplayed()))
     }
 
     /**
